@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- icone materialize -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- custom style -->
+        <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+        <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-firestore.js"></script>
+
+        <title>AM Cinema</title>
+    </head>
+
+    <body>
+        <div id="app">
+            <header>
+                <nav class="header">
+                    <a href="#" data-target="slide-out" class="sidenav-trigger show-on-medium-and-up"><i class="material-icons medium white-text">menu</i></a>
+                    <div style="font-size: 20px;">AM Cinema</div>
+                </nav>
+
+                <ul id="slide-out" class="sidenav">
+                    <li>
+                        <router-link class="waves-effect" to="/"><i class="material-icons">home</i>Home</a>
+                    </li>
+                    <li>
+                        <router-link class="waves-effect" to="/catalogo"><i class="material-icons">person</i>Catalogo</a>
+                    </li>
+                    <li>
+                        <router-link class="waves-effect" to="/portfolio"><i class="material-icons">image</i>Portfolio</a>
+                    </li>
+                    <li>
+                        <router-link class="waves-effect" to="/contatti"><i class="material-icons">mail</i>Contatti</a>
+                    </li>
+                </ul>
+            </header>
+            
+            <main>
+                <div>
+                    <router-view></router-view>
+                </div>
+            </main>
+           
+            <!-- <footer class="footer"><p> Il nostro footer </p></footer> -->
+            
+
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        
+        <script>
+        
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+            apiKey: "AIzaSyB2vT_mhr1t7CLk6fNjs8-Vu2shtSD-Ifs",
+            authDomain: "am-cinema-c7a05.firebaseapp.com",
+            databaseURL: "https://am-cinema-c7a05.firebaseio.com",
+            projectId: "am-cinema-c7a05",
+            storageBucket: "",
+            messagingSenderId: "107281194962",
+            appId: "1:107281194962:web:94ac17a8b409bfcf37b20b"
+            };
+
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+
+            var db = firebase.firestore();
+            var filmRef = db.collection("movies");
+
+            /* filmRef.doc("TLK").set({
+                titolo: "The Lion King", annoPubblicazione: 2019, durataMinuti: 118,
+                genere: "Animazione, Avventura, Drammatico", regia: "Jon Favreau"
+            });
+
+            filmRef.doc("AE").set({
+                titolo: "Avengers: Endgame", annoPubblicazione: 2019, durataMinuti: 181,
+                genere: "Azione, Avventura, Fantascienza", regia: "Anthony e Joe Russo"
+            });
+            
+            filmRef.doc("JO").set({
+                titolo: "Joker", annoPubblicazione: 2019, durataMinuti: 122,
+                genere: "Poliziesco, Drammatico", regia: "Todd Phillips"
+            });
+
+            filmRef.doc("IT2").set({
+                titolo: "IT - Capitolo Due", annoPubblicazione: 2019, durataMinuti: 169,
+                genere: "Thriller, Fantastico, Drammatico", regia: "Andrés Muschietti"
+            });
+            */
+         
+            filmRef.get().then(function (r) {  
+                r.forEach(function(n) {
+                    const data = n.data();
+                    console.log("id = " + n.id);
+                    console.log("anno = " + data.anno);
+                    console.log("durata in minuti = " + data.durata);
+                    console.log("genere = " + data.genere);
+                    console.log("regia = " + data.regia);
+                    console.log("titolo = " + data.titolo);
+                   
+                });
+                
+            });
+           
+
+
+
+
+
+            
+            
+      
+            
+            </script>
+
+        
+            <!-- jquery -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <!-- Compiled and minified JavaScript -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            <!-- vue.js -->
+            <script src="https://unpkg.com/vue/dist/vue.js"></script>
+            <!-- vue router -->
+            <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+            <!-- custom js -->
+            <script src="main.js"></script>
+
+
+    </body>
+
+</html>
